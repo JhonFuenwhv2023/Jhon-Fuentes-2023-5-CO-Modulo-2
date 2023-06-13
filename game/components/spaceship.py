@@ -6,7 +6,7 @@ from game.utils.constants import SCREEN_HEIGHT, SPACESHIP, SCREEN_WIDTH
 class Spaceship(Sprite):
     SPACESHIP_WIDTH = 40
     SPACESHIP_HEIGHT = 60
-    HALF_SCREEN_WIDTH = SCREEN_WIDTH // 2
+    HALF_SCREEN_WIDTH = SCREEN_HEIGHT // 2
     X_POS = (SCREEN_WIDTH // 2) - SPACESHIP_WIDTH
     Y_POS = 500
     def __init__(self):
@@ -28,10 +28,14 @@ class Spaceship(Sprite):
     def move_left(self):
         if self.rect.left > 0:
             self.rect.x -= 10
+        else:   # If it has reached the left edge.
+            self.rect.x = SCREEN_WIDTH - self.SPACESHIP_WIDTH
 
     def move_right(self):
         if self.rect.right < SCREEN_WIDTH:
             self.rect.x += 10
+        else:   # If it has reached the right edge.
+            self.rect.x = 0    
 
     def move_up(self):
         if self.rect.y > self.HALF_SCREEN_WIDTH:
