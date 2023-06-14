@@ -1,6 +1,5 @@
 from game.components.enemies.enemy import Enemy
 
-
 class EnemyManager:
     def __init__(self):
         self.enemies = []
